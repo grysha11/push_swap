@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   utility.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/06 21:59:01 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/11 18:23:11 by hzakharc         ###   ########.fr       */
+/*   Created: 2024/07/11 17:11:18 by hzakharc          #+#    #+#             */
+/*   Updated: 2024/07/13 19:46:35 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_atoi(const char *str)
+void	print_error(void)
 {
-	int		i;
-	int		sign;
-	long	res;
+	ft_putstr_fd("Error\n", 2);
+	exit(1);
+}
+t_list	*init_stack_a(int ac, char **av)
+{
+	t_list	*stack_a;
 
-	i = 0;
-	sign = 1;
-	res = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = (str[i] - '0') + (res * 10);
-		i++;
-	}
-	return (res * sign);
+	stack_a = NULL;
+	get_data(av, ac, &stack_a);
+	return (stack_a);
 }

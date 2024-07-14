@@ -6,15 +6,37 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 10:14:45 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/10 14:08:51 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/07/14 13:09:57 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 int	main(int ac, char **av)
 {
-	ft_printf("privet!");
+    t_list  *stack_a;
+    t_list  *current;
+
+
+    if (ac != 1)
+    {
+        stack_a = init_stack_a(ac, av);
+        ft_swap(&stack_a);
+        current = stack_a;
+        while (current != NULL)
+        {
+            printf("Value is: %d\tIndex is: %d\n", current->value, current->index);
+            current = current->next;
+        }
+        while (stack_a != NULL)
+        {
+            t_list *tmp = stack_a->next;
+            free(stack_a);
+            stack_a = tmp; 
+        }
+    }
+    else
+        print_error();
 
     return (0);
 }
