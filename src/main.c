@@ -6,7 +6,7 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 10:14:45 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/14 13:09:57 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/07/15 15:46:24 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int ac, char **av)
     if (ac != 1)
     {
         stack_a = init_stack_a(ac, av);
-        ft_swap(&stack_a);
+        ft_rrotate(&stack_a);
         current = stack_a;
         while (current != NULL)
         {

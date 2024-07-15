@@ -6,7 +6,7 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 13:22:54 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/14 00:35:36 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/07/15 15:44:32 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ int		check_string(char *s)
 	long	result;
 
 	i = 0;
+	if (s[i] == '+' || s[i] == '-')
+		i++;
 	while (s[i] != '\0')
 	{
-		if (s[i] >= '0' && s[i] <= '9' || s[i] == '-' || s[i] == '+')
+		if (s[i] >= '0' && s[i] <= '9')
 			i++;
 		else
 			print_error();

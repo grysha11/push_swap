@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utility.c                                          :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/11 17:11:18 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/15 12:08:32 by hzakharc         ###   ########.fr       */
+/*   Created: 2024/07/15 12:03:19 by hzakharc          #+#    #+#             */
+/*   Updated: 2024/07/15 15:41:06 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_error(void)
+int	ra(t_list **stack_a)
 {
-	ft_putstr_fd("Error\n", 2);
-	exit(1);
+	if (ft_rotate(stack_a) == -1)
+		return (-1);
+	ft_printf("ra\n");
+	return (0);
 }
-t_list	*init_stack_a(int ac, char **av)
+int	rb(t_list **stack_b)
 {
-	t_list	*stack_a;
-
-	stack_a = NULL;
-	get_data(av, ac, &stack_a);
-	return (stack_a);
+	if (ft_rotate(stack_b) == -1)
+		return(-1);
+	ft_printf("rb\n");
+	return (0);
 }
-
-int	ft_lst_size(t_list *lst)
+int	rr(t_list **stack_a, t_list **stack_b)
 {
-	int		i;
-	t_list	*temp;
-
-	i = 0;
-	temp = lst;
-	while (temp)
-	{
-		temp = temp->next;
-		i++;
-	}
-	return (i);
+	if (ft_rotate(stack_a) == -1 || ft_rotate(stack_b) == -1)
+		return (-1);
+	ft_printf("rr\n");
+	return (0);
 }
