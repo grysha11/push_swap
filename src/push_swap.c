@@ -6,7 +6,7 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:43:20 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/15 14:43:56 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/07/18 17:16:16 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	pb(t_list **stack_a, t_list **stack_b)
 	ft_printf("pb\n");
 	return (0);
 }
+
 int	sa(t_list **stack_a)
 {
 	if (ft_swap(stack_a) == -1)
@@ -42,6 +43,7 @@ int	sb(t_list **stack_b)
 	ft_printf("sb\n");
 	return (0);
 }
+
 int	ss(t_list **stack_a, t_list	**stack_b)
 {
 	if (ft_swap(stack_a) == -1)

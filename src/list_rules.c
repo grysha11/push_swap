@@ -6,7 +6,7 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:41:10 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/15 14:42:16 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/07/18 17:15:14 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,14 @@ int	ft_swap(t_list **stack)
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return (-1);
-	head = *stack;			
+	head = *stack;
 	tmp = head->next;
 	head->next = tmp->next;
 	tmp->next = head;
 	*stack = tmp;
 	return (0);
 }
+
 int	ft_rotate(t_list **lst)
 {
 	t_list	*head;

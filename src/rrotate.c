@@ -6,7 +6,7 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:56:46 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/15 14:58:17 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/07/18 17:17:30 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	rra(t_list **stack_a)
 	ft_printf("rra\n");
 	return (0);
 }
+
 int	rrb(t_list **stack_b)
 {
 	if (ft_rrotate(stack_b) == -1)
@@ -26,10 +27,11 @@ int	rrb(t_list **stack_b)
 	ft_printf("rrb\n");
 	return (0);
 }
-int rrr(t_list **stack_a, t_list **stack_b)
+
+int	rrr(t_list **stack_a, t_list **stack_b)
 {
 	if (ft_rrotate(stack_a) == -1 || ft_rrotate(stack_b))
 		return (-1);
 	ft_printf("rrr\n");
-	return (0);	
+	return (0);
 }

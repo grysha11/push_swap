@@ -6,14 +6,14 @@
 #    By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 13:25:52 by hzakharc          #+#    #+#              #
-#    Updated: 2024/07/15 15:43:37 by hzakharc         ###   ########.fr        #
+#    Updated: 2024/07/19 20:41:20 by hzakharc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCSDIR		=	src
 SRCS		=	$(SRCSDIR)/main.c $(SRCSDIR)/get_data.c $(SRCSDIR)/list.c \
 				$(SRCSDIR)/utility.c $(SRCSDIR)/push_swap.c $(SRCSDIR)/rotate.c \
-				$(SRCSDIR)/list_rules.c $(SRCSDIR)/rrotate.c
+				$(SRCSDIR)/list_rules.c $(SRCSDIR)/rrotate.c $(SRCSDIR)/simplesort.c \
 
 LIBFTDIR	=	include/libft
 PRINTFDIR	=	include/ft_printf
