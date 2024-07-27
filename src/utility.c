@@ -6,7 +6,7 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:11:18 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/19 20:52:10 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/07/27 16:50:38 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_list	*init_stack_a(int ac, char **av)
 	stack_a = NULL;
 	get_data(av, ac, &stack_a);
 	check_for_dup(&stack_a);
+	calc_distance(&stack_a, ac);
 	return (stack_a);
 }
 

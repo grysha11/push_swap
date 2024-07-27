@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/11 13:22:54 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/19 20:37:45 by hzakharc         ###   ########.fr       */
+/*   Created: 2024/07/25 11:58:53 by hzakharc          #+#    #+#             */
+/*   Updated: 2024/07/27 18:14:53 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,42 @@ void	check_for_dup(t_list **stack_a)
 		temp = temp->next;
 		temp2 = temp;
 	}
+}
+
+void	assign_distance(t_list **stack_a, int *arr)
+{
+	t_list	*temp;
+	int		i;
+
+	temp = *stack_a;
+	while (temp != NULL)
+	{
+		i = 0;
+		while (temp->value != arr[i])
+			i++;
+		temp->distance = i;
+		temp = temp->next;
+	}
+}
+
+void	calc_distance(t_list **stack_a, int ac)
+{
+	int 	*sorted;
+	int		i;
+	t_list	*temp;
+
+	sorted = malloc(sizeof(int) * ft_lst_size(*stack_a));
+	if (!sorted)
+		print_error();
+	temp = *stack_a;
+	i = 0;
+	while (temp != NULL)
+	{
+		sorted[i] = temp->value;
+		temp = temp->next;
+		i++;
+	}
+	ft_qsort(sorted, 0, ft_lst_size(*stack_a) - 1);
+	assign_distance(stack_a, sorted);
+	free(sorted);
 }

@@ -6,7 +6,7 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 10:15:54 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/21 18:57:29 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/07/25 16:47:31 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_list
 {
 	int				value;
 	int				index;
+	int				distance;
 	struct s_list	*next;
 }					t_list;
 
@@ -56,13 +57,16 @@ int		rrb(t_list **stack_b);
 int		rrr(t_list **stack_a, t_list **stack_b);
 
 int		find_min(t_list **stack);
+void	ft_qsort(int *arr, int low, int high);
 int		is_sorted(t_list **stack_a);
 void	sort2(t_list **stack_a);
 void	sort3(t_list **stack_a);
 void	sort4(t_list **stack_a, t_list **stack_b);
+void	sort5(t_list **stack_a, t_list **stack_b);
 
 int		check_string(char *s);
 void	get_data(char **av, int ac, t_list **stack_a);
 void	check_for_dup(t_list **stack_a);
+void	calc_distance(t_list **stack_a, int ac);
 
 #endif

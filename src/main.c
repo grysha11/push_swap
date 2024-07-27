@@ -6,7 +6,7 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 10:14:45 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/21 19:00:23 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/07/27 18:15:14 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ int	main(int ac, char **av)
         current = stack_a;
         while (current != NULL)
         {
-            printf("Value is: %d\tIndex is: %d\n", current->value, current->index);
+            printf("Value is: %d\tIndex is: %d\tDistance is: %d\n", current->value, current->index, current->distance);
             current = current->next;
         }
-        sort4(&stack_a, &stack_b);
+        sort5(&stack_a, &stack_b);
         current = stack_a;
         printf("\n");
         while (current != NULL)
         {
-            printf("Value is: %d\tIndex is: %d\n", current->value, current->index);
+            printf("Value is: %d\tIndex is: %d\tDistance is: %d\n", current->value, current->index, current->distance);
             current = current->next;
         }
         while (stack_a != NULL)

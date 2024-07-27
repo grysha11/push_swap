@@ -6,7 +6,7 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 20:17:55 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/21 19:01:36 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/07/22 13:34:12 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,23 @@ void	sort4(t_list **stack_a, t_list **stack_b)
 	pa(stack_a, stack_b);
 }
 
- 
+void	sort5(t_list **stack_a, t_list **stack_b)
+{
+	if (find_min(stack_a) == 1)
+		sa(stack_a);
+	else if (find_min(stack_a) == 2)
+	{
+		ra(stack_a);
+		ra(stack_a);
+	}
+	else if (find_min(stack_a) == 3)
+	{
+		rra(stack_a);
+		rra(stack_a);
+	}
+	else if (find_min(stack_a) == 4)
+		rra(stack_a);
+	pb(stack_a, stack_b);
+	sort4(stack_a, stack_b);
+	pa(stack_a, stack_b);
+}
