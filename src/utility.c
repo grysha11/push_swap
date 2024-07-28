@@ -6,7 +6,7 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:11:18 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/27 16:50:38 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/07/28 15:23:26 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,29 +41,6 @@ int	is_sorted(t_list **stack_a)
 		temp = temp->next;
 	}
 	return (0);
-}
-
-t_list	*init_stack_b(int ac)
-{
-	t_list	*stack_b;
-	t_list	*temp;
-	int		i;
-
-	i = 1;
-	stack_b = malloc(sizeof(t_list));
-	if (!stack_b)
-		return (NULL);
-	temp = stack_b;
-	while (i < ac)
-	{
-		temp->next = malloc(sizeof(t_list));
-		if (!temp->next)
-			return (NULL);
-		temp = temp->next;
-		i++;
-	}
-	temp->next = NULL;
-	return (stack_b);
 }
 
 int	ft_lst_size(t_list *lst)

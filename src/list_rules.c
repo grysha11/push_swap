@@ -6,7 +6,7 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:41:10 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/18 17:15:14 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/07/27 21:23:34 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,28 @@
 
 int	ft_push(t_list **src, t_list **dst)
 {
-	t_list	*tmp;
+	t_list	*temp;
+	t_list	*tsrc;
+	t_list	*tdst;
 
-	if (*src == NULL)
+	if (ft_lst_size(*src) == 0)
 		return (-1);
-	tmp = *src;
-	*src = (*src)->next;
-	tmp->next = *dst;
-	*dst = tmp;
+	tdst = *dst;
+	tsrc = *src;
+	temp = tsrc;
+	tsrc = tsrc->next;
+	*src = tsrc;
+	if (!tdst)
+	{
+		tdst = temp;
+		tdst->next = NULL;
+		*dst = tdst;
+	}
+	else
+	{
+		temp->next = tdst;
+		*dst = temp;
+	}
 	return (0);
 }
 

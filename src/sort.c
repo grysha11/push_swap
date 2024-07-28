@@ -6,9 +6,13 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 14:22:31 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/27 19:16:26 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/07/27 19:47:08 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void    butterfly_sort(t_list **stack_a, t_list **stack_b)
+{
+        
+}
