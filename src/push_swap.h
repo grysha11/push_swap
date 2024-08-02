@@ -6,7 +6,7 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 10:15:54 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/25 16:47:31 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/08/01 21:04:15 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,13 @@ void	sort3(t_list **stack_a);
 void	sort4(t_list **stack_a, t_list **stack_b);
 void	sort5(t_list **stack_a, t_list **stack_b);
 
+void	form_butterfly(t_list **stack_a, t_list **stack_b);
+
 int		check_string(char *s);
+int		data_util(char ***data);
+char	**matrix_copy(char **av);
 void	get_data(char **av, int ac, t_list **stack_a);
 void	check_for_dup(t_list **stack_a);
-void	calc_distance(t_list **stack_a, int ac);
+void	calc_distance(t_list **stack_a);
 
 #endif

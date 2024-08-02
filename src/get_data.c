@@ -6,7 +6,7 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:58:53 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/28 18:23:03 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/08/01 20:30:55 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,22 @@ int	check_string(char *s)
 
 void	get_data(char **av, int ac, t_list **stack_a)
 {
-	size_t	i;
+	int		i;
 	int		value;
+	char	**data;
 	t_list	*tmp;
+	int		size;
 
 	i = 1;
-	while (i < ac)
+	size = 0;
+	data = matrix_copy(av);
+	if (ac == 2)
+		i = data_util(&data);
+	while (data[size] != NULL)
+		size++;
+	while (i < size)
 	{
-		value = check_string(av[i]);
+		value = check_string(data[i]);
 		tmp = ft_list_new(value, i);
 		if (!tmp)
 			print_error();
@@ -50,26 +58,28 @@ void	get_data(char **av, int ac, t_list **stack_a)
 		tmp = tmp->next;
 		i++;
 	}
+	for (int j = 0; data[j] != NULL; j++)
+        free(data[j]);
+    free(data);
 }
 
-void	check_for_dup(t_list **stack_a)
+void check_for_dup(t_list **stack_a)
 {
-	t_list *temp;
-	t_list *temp2;
+    t_list	*temp;
+    t_list	*temp2;
 
-	temp = *stack_a;
-	temp2 = *stack_a;
-	while (temp->next != NULL)
-	{
-		while (temp2->next != NULL)
-		{
-			temp2 = temp2->next;
-			if (temp->value == temp2->value)
-				print_error();
-		}
-		temp = temp->next;
-		temp2 = temp;
-	}
+    temp = *stack_a;
+    while (temp->next != NULL)
+    {
+        temp2 = temp->next;
+        while (temp2 != NULL)
+        {
+            if (temp->value == temp2->value)
+                print_error();
+            temp2 = temp2->next;
+        }
+        temp = temp->next;
+    }
 }
 
 void	assign_distance(t_list **stack_a, int *arr)
@@ -88,7 +98,7 @@ void	assign_distance(t_list **stack_a, int *arr)
 	}
 }
 
-void	calc_distance(t_list **stack_a, int ac)
+void	calc_distance(t_list **stack_a)
 {
 	int 	*sorted;
 	int		i;

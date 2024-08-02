@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hzakharc <hzakharc@student.42.fr>          +#+  +:+       +#+         #
+#    By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 16:54:46 by hzakharc          #+#    #+#              #
-#    Updated: 2024/06/18 17:12:02 by hzakharc         ###   ########.fr        #
+#    Updated: 2024/08/01 21:01:31 by hzakharc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ SRCS		=	ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
 					  ft_strjoin.c ft_strmapi.c ft_strtrim.c
 OBJS		=	$(SRCS:.c=.o)
 
-CC			=	cc
-RM			=	rm -f
+CC			=	@cc
+RM			=	@rm -rf
 CFLAGS		=	-Wall -Werror -Wextra -I.
 
 NAME		=	libft.a
@@ -28,7 +28,7 @@ NAME		=	libft.a
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-			ar rcs $(NAME) $(OBJS)
+			@ar rcs $(NAME) $(OBJS)
 
 clean:		
 			$(RM) $(OBJS)

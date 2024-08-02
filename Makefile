@@ -6,15 +6,15 @@
 #    By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/10 13:25:52 by hzakharc          #+#    #+#              #
-#    Updated: 2024/07/25 16:49:13 by hzakharc         ###   ########.fr        #
+#    Updated: 2024/08/01 21:06:12 by hzakharc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCSDIR		=	src
 SRCS		=	$(SRCSDIR)/main.c $(SRCSDIR)/get_data.c $(SRCSDIR)/list.c \
-				$(SRCSDIR)/utility.c $(SRCSDIR)/push_swap.c $(SRCSDIR)/rotate.c \
-				$(SRCSDIR)/list_rules.c $(SRCSDIR)/rrotate.c $(SRCSDIR)/simplesort.c \
-				$(SRCSDIR)/distance.c \
+                $(SRCSDIR)/utility.c $(SRCSDIR)/push_swap.c $(SRCSDIR)/rotate.c \
+                $(SRCSDIR)/list_rules.c $(SRCSDIR)/rrotate.c $(SRCSDIR)/simplesort.c \
+                $(SRCSDIR)/distance.c $(SRCSDIR)/sort.c
 
 LIBFTDIR	=	include/libft
 PRINTFDIR	=	include/ft_printf
@@ -24,8 +24,8 @@ PRINTF		=	$(PRINTFDIR)/libftprintf.a
 
 OBJS		=	$(SRCS:.c=.o)
 
-CC			=	cc
-RM			=	rm -f
+CC			=	@cc
+RM			=	@rm -f
 CCFLAGS		=	-Wall -Werror -Wextra
 
 BLUE		=	\033[0;94m
@@ -42,28 +42,25 @@ S_NAME		=	@echo "$(CYAN)full clean completed ! ヽ(・∀・)ﾉ$(COLOR)"
 
 NAME		=	push_swap
 
+%.o:		%.c
+			$(CC) $(CCFLAGS) -c $< -o $@
+
 all:		$(NAME)
 
-$(LIBFT):		
-			$(MAKE) -sC $(LIBFTDIR)
-
-$(PRINTF):	
-			$(MAKE) -sC $(PRINTFDIR)
-
-$(NAME):	$(LIBFT) $(PRINTF) $(OBJS)
-			$(CC) $(CCFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $@
+$(NAME):	$(OBJS)
+			@make -sC $(LIBFTDIR)
+			@make -sC $(PRINTFDIR)
+			@$(CC) $(CCFLAGS) $(OBJS) ${LIBFT} ${PRINTF} -o $(NAME)
 			$(SUCCESS)
 
 clean:
 			$(RM) $(OBJS)
-			$(MAKE) -sC $(LIBFTDIR) clean
-			$(MAKE) -sC $(PRINTFDIR) clean
+			@make --no-print-directory -sC $(PRINTFDIR) clean
 			$(S_OBJS)
 
 fclean:		clean
 			$(RM) $(NAME)
-			$(MAKE) -sC $(LIBFTDIR) fclean
-			$(MAKE) -sC $(PRINTFDIR) fclean
+			@make --no-print-directory -sC $(PRINTFDIR) fclean
 			$(S_NAME)
 
 re:			fclean all

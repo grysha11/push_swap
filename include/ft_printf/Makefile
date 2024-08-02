@@ -6,7 +6,7 @@
 #    By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/18 19:50:36 by hzakharc          #+#    #+#              #
-#    Updated: 2024/07/10 15:54:24 by hzakharc         ###   ########.fr        #
+#    Updated: 2024/08/01 21:00:19 by hzakharc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,27 +17,27 @@ LIBFT		= 	$(LIBFTDIR)libft.a
 OBJS		= 	$(SRCS:.c=.o)
 
 CC			= 	cc
-RM			= 	rm -f
+RM			= 	@rm -rf
 CCFLAGS		= 	-Wall -Werror -Wextra -I.
 
 NAME		= 	libftprintf.a
 
+%.o:			%.c
+				@$(CC) $(CCFLAGS) -c $< -o $@
+
 all:			$(NAME)
-
-$(LIBFT):
-				$(MAKE) -C $(LIBFTDIR)
 				
-$(NAME):		$(LIBFT) $(OBJS)
-				ar rcs $(NAME) $(LIBFT) $(OBJS)
-
+$(NAME):		$(OBJS)
+				@make -sC ${LIBFTDIR}
+				@ar rcs $(NAME) $(LIBFT) $(OBJS)
 
 clean:
 				$(RM) $(OBJS)
-				$(MAKE) -C $(LIBFTDIR) clean
+				@make --no-print-directory -C $(LIBFTDIR) clean
 
 fclean:			clean
 				$(RM) $(NAME)
-				$(MAKE) -C $(LIBFTDIR) fclean
+				@make --no-print-directory -C $(LIBFTDIR) fclean
 
 re:				fclean all
 
