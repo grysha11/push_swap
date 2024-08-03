@@ -6,13 +6,13 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:13:33 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/07/25 11:59:44 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/08/03 15:40:57 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_list_new(int value, int index)
+t_list	*ft_list_new(int value)
 {
 	t_list	*head;
 
@@ -20,7 +20,6 @@ t_list	*ft_list_new(int value, int index)
 	if (!head)
 		return (NULL);
 	head->value = value;
-	head->index = index;
 	head->next = NULL;
 	return (head);
 }

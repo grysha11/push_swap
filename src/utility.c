@@ -6,27 +6,51 @@
 /*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:11:18 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/08/01 20:31:28 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/08/03 15:44:45 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_error(void)
+void	free_matrix_data(char **data)
 {
+	int	i;
+	i = 0;
+	while (data[i] != NULL)
+	{
+		free(data[i]);
+		i++;
+	}
+	free(data);
+}
+
+void	error_data(char **data)
+{
+	free_matrix_data(data);
 	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }
 
-t_list	*init_stack_a(int ac, char **av)
+void	error_stack(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*stack_a;
+	ft_lst_clear(stack_a);
+	ft_lst_clear(stack_b);
+	ft_putstr_fd("Error\n", 2);
+	exit (1);
+}
+
+void	init_stacks(int ac, char **av, t_list **stack_a, t_list **stack_b)
+{
+	char	**data;
 
 	stack_a = NULL;
-	get_data(av, ac, &stack_a);
-	check_for_dup(&stack_a);
-	calc_distance(&stack_a);
-	return (stack_a);
+	stack_b = NULL;
+	data = matrix_copy(av);
+	if (!data)
+		error_data(data);
+	get_data(data, ac, stack_a, stack_b);
+	check_for_dup(stack_a, stack_b);
+	calc_distance(stack_a, stack_b);
 }
 
 int	is_sorted(t_list **stack_a)
@@ -58,6 +82,25 @@ int	ft_lst_size(t_list *lst)
 	return (i);
 }
 
+void	matrix_copy_data(char **av, char **data)
+{
+	int	i;
+	int	j;
+	
+	i = 0;
+	while (av[i] != NULL)
+	{
+		j = 0;
+		while (av[i][j] != '\0')
+		{
+			data[i][j] = av[i][j];
+			j++;
+		}
+		i++;
+	}
+}
+
+
 char	**matrix_copy(char **av)
 {
 	size_t	i = 0;
@@ -68,7 +111,7 @@ char	**matrix_copy(char **av)
 		i++;
 	result = malloc(sizeof(char *) * (i + 1));
 	if (!result)
-		print_error();
+		error_data(result);
 	result[i] = NULL;
 	i = 0;
 	while (av[i] != NULL)
@@ -78,29 +121,20 @@ char	**matrix_copy(char **av)
 			j++;
 		result[i] = malloc(sizeof(char) * (j + 1));
 		if (!result[i])
-			print_error();
+			error_data(result);
 		result[i][j] = '\0';
 		i++;
 	}
-	i = 0;
-	while (av[i] != NULL)
-	{
-		j = 0;
-		while (av[i][j] != '\0')
-		{
-			result[i][j] = av[i][j];
-			j++;
-		}
-		i++;
-	}
+	matrix_copy_data(av, result);
 	return (result);
 }
 
 int data_util(char ***data)
 {
-    char **temp;
-    size_t j = 0;
+    char	**temp;
+    int		j;
 
+	j = 0;
     while ((*data)[1][j] != '\0' && (*data)[1][j] != ' ')
         j++;
     if ((*data)[1][j] == '\0')
@@ -108,9 +142,7 @@ int data_util(char ***data)
     else
     {
         temp = ft_split((*data)[1], ' ');
-        for (int k = 0; (*data)[k] != NULL; k++)
-            free((*data)[k]);
-        free(*data);
+		free_matrix_data(*data);
         *data = temp;
         return 0;
     }
