@@ -31,6 +31,8 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
+	stack_a = NULL;
+	stack_b = NULL;
 	init_stacks(ac, av, &stack_a, &stack_b);
 	if (is_sorted(&stack_a) == 0)
 	{
