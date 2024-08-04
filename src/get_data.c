@@ -49,24 +49,12 @@ int		check_data(char **data, int i)
 	return (0);
 }
 
-void	get_data(char **data, int ac, t_list **stack_a, t_list **stack_b)
+void get_data_util(char **data, int i, int size, t_list **stack_a, t_list **stack_b)
 {
-	int		i;
 	int		value;
 	t_list	*tmp;
-	int		size;
 
-	i = 1;
-	size = 0;
 	tmp = *stack_a;
-	if (ac == 2)
-		i = data_util(&data);
-	while (data[size] != NULL)
-		size++;
-	if (check_data(data, i) == -1)
-	{
-		error_data(data);
-	}
 	while (i < size)
 	{
 		value = ft_atoi(data[i]);
@@ -78,6 +66,24 @@ void	get_data(char **data, int ac, t_list **stack_a, t_list **stack_b)
 		i++;
 	}
 	free_matrix_data(data);
+}
+
+void	get_data(char **data, int ac, t_list **stack_a, t_list **stack_b)
+{
+	int		i;
+	int		size;
+
+	i = 1;
+	size = 0;
+	if (ac == 2)
+		i = data_util(&data);
+	while (data[size] != NULL)
+		size++;
+	if (check_data(data, i) == -1)
+	{
+		error_data(data);
+	}
+	get_data_util(data, i, size, stack_a, stack_b);
 }
 
 void check_for_dup(t_list **stack_a, t_list **stack_b)

@@ -43,8 +43,6 @@ void	init_stacks(int ac, char **av, t_list **stack_a, t_list **stack_b)
 {
 	char	**data;
 
-	stack_a = NULL;
-	stack_b = NULL;
 	data = matrix_copy(av);
 	if (!data)
 		error_data(data);

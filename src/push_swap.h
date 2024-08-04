@@ -76,6 +76,7 @@ int		check_string(char *s);
 int		data_util(char ***data);
 char	**matrix_copy(char **av);
 void	get_data(char **data, int ac, t_list **stack_a, t_list **stack_b);
+void	get_data_util(char **data, int i, int size, t_list **stack_a, t_list **stack_b);
 void	check_for_dup(t_list **stack_a, t_list **stack_b);
 void	calc_distance(t_list **stack_a, t_list **stack_b);
 
