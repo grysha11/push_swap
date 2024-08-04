@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utility.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
+/*   By: hzakharc <hzakharc@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 17:11:18 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/08/03 15:44:45 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/08/04 20:38:57 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	free_matrix_data(char **data)
 {
 	int	i;
+
 	i = 0;
 	while (data[i] != NULL)
 	{
@@ -22,33 +23,6 @@ void	free_matrix_data(char **data)
 		i++;
 	}
 	free(data);
-}
-
-void	error_data(char **data)
-{
-	free_matrix_data(data);
-	ft_putstr_fd("Error\n", 2);
-	exit(1);
-}
-
-void	error_stack(t_list **stack_a, t_list **stack_b)
-{
-	ft_lst_clear(stack_a);
-	ft_lst_clear(stack_b);
-	ft_putstr_fd("Error\n", 2);
-	exit (1);
-}
-
-void	init_stacks(int ac, char **av, t_list **stack_a, t_list **stack_b)
-{
-	char	**data;
-
-	data = matrix_copy(av);
-	if (!data)
-		error_data(data);
-	get_data(data, ac, stack_a, stack_b);
-	check_for_dup(stack_a, stack_b);
-	calc_distance(stack_a, stack_b);
 }
 
 int	is_sorted(t_list **stack_a)
@@ -84,7 +58,7 @@ void	matrix_copy_data(char **av, char **data)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (av[i] != NULL)
 	{
@@ -98,13 +72,13 @@ void	matrix_copy_data(char **av, char **data)
 	}
 }
 
-
 char	**matrix_copy(char **av)
 {
-	size_t	i = 0;
-	size_t	j = 0;
+	size_t	i;
+	size_t	j;
 	char	**result;
-	
+
+	i = 0;
 	while (av[i] != NULL)
 		i++;
 	result = malloc(sizeof(char *) * (i + 1));
@@ -126,23 +100,3 @@ char	**matrix_copy(char **av)
 	matrix_copy_data(av, result);
 	return (result);
 }
-
-int data_util(char ***data)
-{
-    char	**temp;
-    int		j;
-
-	j = 0;
-    while ((*data)[1][j] != '\0' && (*data)[1][j] != ' ')
-        j++;
-    if ((*data)[1][j] == '\0')
-        return 1;
-    else
-    {
-        temp = ft_split((*data)[1], ' ');
-		free_matrix_data(*data);
-        *data = temp;
-        return 0;
-    }
-}
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
+/*   By: hzakharc <hzakharc@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:58:53 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/08/03 15:52:13 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/08/04 22:29:13 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_string(char *s)
 	return (0);
 }
 
-int		check_data(char **data, int i)
+int	check_data(char **data, int i)
 {
 	int	j;
 
@@ -49,11 +49,15 @@ int		check_data(char **data, int i)
 	return (0);
 }
 
-void get_data_util(char **data, int i, int size, t_list **stack_a, t_list **stack_b)
+void	get_data_util(char **data, int i, t_list **stack_a, t_list **stack_b)
 {
 	int		value;
 	t_list	*tmp;
+	int		size;
 
+	size = 0;
+	while (data[size] != NULL)
+		size++;
 	tmp = *stack_a;
 	while (i < size)
 	{
@@ -71,74 +75,41 @@ void get_data_util(char **data, int i, int size, t_list **stack_a, t_list **stac
 void	get_data(char **data, int ac, t_list **stack_a, t_list **stack_b)
 {
 	int		i;
-	int		size;
+	char	**temp;
 
 	i = 1;
-	size = 0;
 	if (ac == 2)
-		i = data_util(&data);
-	while (data[size] != NULL)
-		size++;
+	{
+		if (data_util(&data) == 0)
+		{
+			temp = ft_split(data[1], ' ');
+			if (!temp)
+				error_data(data);
+			free_matrix_data(data);
+			data = temp;
+			i = 0;
+		}
+	}
 	if (check_data(data, i) == -1)
-	{
 		error_data(data);
-	}
-	get_data_util(data, i, size, stack_a, stack_b);
+	get_data_util(data, i, stack_a, stack_b);
 }
 
-void check_for_dup(t_list **stack_a, t_list **stack_b)
-{
-    t_list	*temp;
-    t_list	*temp2;
-
-    temp = *stack_a;
-    while (temp->next != NULL)
-    {
-        temp2 = temp->next;
-        while (temp2 != NULL)
-        {
-            if (temp->value == temp2->value)
-                error_stack(stack_a, stack_b);
-            temp2 = temp2->next;
-        }
-        temp = temp->next;
-    }
-}
-
-void	assign_distance(t_list **stack_a, int *arr)
+void	check_for_dup(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*temp;
-	int		i;
+	t_list	*temp2;
 
 	temp = *stack_a;
-	while (temp != NULL)
+	while (temp->next != NULL)
 	{
-		i = 0;
-		while (temp->value != arr[i])
-			i++;
-		temp->distance = i;
+		temp2 = temp->next;
+		while (temp2 != NULL)
+		{
+			if (temp->value == temp2->value)
+				error_stack(stack_a, stack_b);
+			temp2 = temp2->next;
+		}
 		temp = temp->next;
 	}
-}
-
-void	calc_distance(t_list **stack_a, t_list **stack_b)
-{
-	int 	*sorted;
-	int		i;
-	t_list	*temp;
-
-	sorted = malloc(sizeof(int) * ft_lst_size(*stack_a));
-	if (!sorted)
-		error_stack(stack_a, stack_b);
-	temp = *stack_a;
-	i = 0;
-	while (temp != NULL)
-	{
-		sorted[i] = temp->value;
-		temp = temp->next;
-		i++;
-	}
-	ft_qsort(sorted, 0, ft_lst_size(*stack_a) - 1);
-	assign_distance(stack_a, sorted);
-	free(sorted);
 }

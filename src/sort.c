@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
+/*   By: hzakharc <hzakharc@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 14:22:31 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/08/03 13:45:51 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/08/04 22:37:14 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	butterfly_sort(t_list **stack_a, t_list **stack_b, int ac)
+void	butterfly_sort(t_list **stack_a, t_list **stack_b)
 {
-	form_butterfly(stack_a, stack_b, ac);
+	form_butterfly(stack_a, stack_b);
 	while ((*stack_b)->next != NULL)
 	{
 		reform_butterfly(stack_b);
@@ -23,13 +23,13 @@ void	butterfly_sort(t_list **stack_a, t_list **stack_b, int ac)
 	pa(stack_a, stack_b);
 }
 
-void	form_butterfly(t_list **stack_a, t_list **stack_b, int ac)
+void	form_butterfly(t_list **stack_a, t_list **stack_b)
 {
 	int		counter;
 	int		n;
 
 	counter = 1;
-	n = optimize(ac);
+	n = optimize(stack_a);
 	while (*stack_a != NULL)
 	{
 		if ((*stack_a)->distance <= counter)
@@ -82,11 +82,11 @@ int	find_max_distance(t_list **stack)
 	return (max);
 }
 
-int	optimize(int ac)
+int	optimize(t_list **stack_a)
 {
 	int	count;
 
-	count = ac - 1;
+	count = ft_lst_size(*stack_a);
 	if (count > 450)
 		return (29);
 	if (count >= 343)

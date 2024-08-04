@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
+/*   By: hzakharc <hzakharc@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 10:15:54 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/08/03 15:48:23 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/08/04 22:35:24 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,19 @@ void	sort3(t_list **stack_a);
 void	sort4(t_list **stack_a, t_list **stack_b);
 void	sort5(t_list **stack_a, t_list **stack_b);
 
-void	butterfly_sort(t_list **stack_a, t_list **stack_b, int ac);
-void	form_butterfly(t_list **stack_a, t_list **stack_b, int ac);
+void	butterfly_sort(t_list **stack_a, t_list **stack_b);
+void	form_butterfly(t_list **stack_a, t_list **stack_b);
 void	reform_butterfly(t_list **stack_b);
 int		find_position(t_list **stack, int distance);
 int		find_max_distance(t_list **stack);
 int		find_max_distance(t_list **stack);
-int		optimize(int ac);
+int		optimize(t_list **stack_a);
 
 int		check_string(char *s);
 int		data_util(char ***data);
 char	**matrix_copy(char **av);
 void	get_data(char **data, int ac, t_list **stack_a, t_list **stack_b);
-void	get_data_util(char **data, int i, int size, t_list **stack_a, t_list **stack_b);
+void	get_data_util(char **data, int i, t_list **stack_a, t_list **stack_b);
 void	check_for_dup(t_list **stack_a, t_list **stack_b);
 void	calc_distance(t_list **stack_a, t_list **stack_b);
 
