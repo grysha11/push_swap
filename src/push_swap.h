@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzakharc <hzakharc@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 10:15:54 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/08/04 22:35:24 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/08/05 12:30:10 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int		optimize(t_list **stack_a);
 
 int		check_string(char *s);
 int		data_util(char ***data);
+long	ft_atol(const char *str);
 char	**matrix_copy(char **av);
 void	get_data(char **data, int ac, t_list **stack_a, t_list **stack_b);
 void	get_data_util(char **data, int i, t_list **stack_a, t_list **stack_b);

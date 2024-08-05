@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzakharc <hzakharc@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:58:53 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/08/04 22:29:13 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/08/05 12:30:41 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_string(char *s)
 		else
 			return (-1);
 	}
-	result = ft_atoi(s);
+	result = ft_atol(s);
 	if (result < INT_MIN || result > INT_MAX)
 		return (-1);
 	return (0);
@@ -61,7 +61,7 @@ void	get_data_util(char **data, int i, t_list **stack_a, t_list **stack_b)
 	tmp = *stack_a;
 	while (i < size)
 	{
-		value = ft_atoi(data[i]);
+		value = ft_atol(data[i]);
 		tmp = ft_list_new(value);
 		if (!tmp)
 			error_stack(stack_a, stack_b);

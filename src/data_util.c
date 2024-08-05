@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_util.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hzakharc <hzakharc@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: hzakharc < hzakharc@student.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 20:23:44 by hzakharc          #+#    #+#             */
-/*   Updated: 2024/08/04 20:58:23 by hzakharc         ###   ########.fr       */
+/*   Updated: 2024/08/05 12:29:50 by hzakharc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,29 @@ int	data_util(char ***data)
 		return (1);
 	else
 		return (0);
+}
+
+long	ft_atol(const char *str)
+{
+	int		i;
+	int		sign;
+	long	res;
+
+	i = 0;
+	sign = 1;
+	res = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = (str[i] - '0') + (res * 10);
+		i++;
+	}
+	return (res * sign);
 }
